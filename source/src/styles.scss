@@ -6,3 +6,11 @@ html,
 body {
   height: 100%;
 }
+
+.ng-touched.ng-invalid {
+  @extend .is-invalid;
+}
+
+.ng-touched.ng-valid {
+  @extend .is-valid;
+}

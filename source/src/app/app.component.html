@@ -2,5 +2,14 @@
   <main class="container mt-auto mb-auto">
     <h1 class="display-1">MongoDB</h1>
     <p class="lead">Let's convert your GUID to the BinData.</p>
+    <div class="my-3">
+      <input class="form-control text-center fw-bold py-3" type="text" [formControl]="guid" />
+    </div>
+    <div>
+      <div class="alert alert-primary py-1">{{ uuid(guid.value) }}</div>
+      <div class="alert alert-secondary py-1">C#: {{ csuuid(guid.value) }}</div>
+      <div class="alert alert-success py-1">JAVA: {{ juuid(guid.value) }}</div>
+      <div class="alert alert-danger py-1">PYTHON: {{ pyuuid(guid.value) }}</div>
+    </div>
   </main>
 </div>
