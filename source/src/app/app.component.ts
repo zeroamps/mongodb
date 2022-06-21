@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
   uuid(uuid: string) {
     var hex = uuid.replace(/[{}-]/g, '');
-    return `BinData(4, '${this.hexToBase64(hex)}')`;
+    return `BinData(4,'${this.hexToBase64(hex)}')`;
   }
 
   csuuid(uuid: string) {
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     var c = hex.substr(14, 2) + hex.substr(12, 2);
     var d = hex.substr(16, 16);
     hex = a + b + c + d;
-    return `BinData(3, '${this.hexToBase64(hex)}')`;
+    return `BinData(3,'${this.hexToBase64(hex)}')`;
   }
 
   juuid(uuid: string) {
@@ -57,12 +57,12 @@ export class AppComponent implements OnInit {
       lsb.substr(2, 2) +
       lsb.substr(0, 2);
     hex = msb + lsb;
-    return `BinData(3, '${this.hexToBase64(hex)}')`;
+    return `BinData(3,'${this.hexToBase64(hex)}')`;
   }
 
   pyuuid(uuid: any) {
     var hex = uuid.replace(/[{}-]/g, '');
-    return `BinData(3, '${this.hexToBase64(hex)}')`;
+    return `BinData(3,'${this.hexToBase64(hex)}')`;
   }
 
   private hexToBase64(hex: string) {
