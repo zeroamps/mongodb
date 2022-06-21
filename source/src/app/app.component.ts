@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class AppComponent implements OnInit {
   guid: FormControl;
 
-  constructor() {
+  constructor(private clipboardApi: ClipboardService) {
     this.guid = new FormControl('00de21d3-6daf-487f-9f56-a924c53cd880', [
       Validators.required,
       Validators.pattern(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
@@ -17,6 +18,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.guid.markAllAsTouched();
+  }
+
+  copyText(text: string, event: Event) {
+    this.clipboardApi.copyFromContent(text);
+    const element = event.target as HTMLElement;
+    if (element.classList.contains('bi-clipboard')) {
+      element.classList.replace('bi-clipboard', 'bi-clipboard-check');
+    }
   }
 
   uuid(uuid: string) {
